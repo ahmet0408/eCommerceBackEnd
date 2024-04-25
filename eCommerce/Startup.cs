@@ -148,7 +148,7 @@ namespace eCommerce
             app.UseRequestLocalization();
 
             app.UseCors(builder => builder
-               .WithOrigins("http://localhost:3000","http://192.168.72.1:3000")
+               .WithOrigins("http://localhost:3000","http://192.168.163.1:3000")
                .AllowAnyHeader()
                .AllowAnyMethod()
                //.AllowAnyOrigin()

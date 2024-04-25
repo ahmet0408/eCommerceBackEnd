@@ -1,0 +1,252 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\vendor\simple-line-icons\node_modules\**" />
+    <Content Remove="wwwroot\vendor\simple-line-icons\node_modules\**" />
+    <EmbeddedResource Remove="wwwroot\vendor\simple-line-icons\node_modules\**" />
+    <None Remove="wwwroot\vendor\simple-line-icons\node_modules\**" />
+    <TypeScriptCompile Remove="wwwroot\vendor\simple-line-icons\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\curved-border.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-apple.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-avatar.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-chat.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-cloud.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-connect.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-download.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-finger.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-google-play.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-group-users.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-monitor.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-paper-plane.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-pencil.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-refresh.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-share.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-sign-up.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-star.svg" />
+    <None Include="wwwroot\img\demos\app-landing\icons\icon-stop-watch.svg" />
+    <None Include="wwwroot\img\demos\app-landing\svg\connect-dots.svg" />
+    <None Include="wwwroot\img\demos\app-landing\svg\connect-point.svg" />
+    <None Include="wwwroot\img\demos\app-landing\svg\shape-1.svg" />
+    <None Include="wwwroot\img\demos\architecture-2\icons\house-plant.svg" />
+    <None Include="wwwroot\img\demos\architecture-2\icons\sofa.svg" />
+    <None Include="wwwroot\img\demos\architecture-2\icons\wallpaper.svg" />
+    <None Include="wwwroot\img\demos\architecture-interior\icons\bathtub.svg" />
+    <None Include="wwwroot\img\demos\architecture-interior\icons\buildings.svg" />
+    <None Include="wwwroot\img\demos\architecture-interior\icons\home.svg" />
+    <None Include="wwwroot\img\demos\architecture-interior\icons\sofa.svg" />
+    <None Include="wwwroot\img\demos\auto-services\half-square-top.svg" />
+    <None Include="wwwroot\img\demos\auto-services\half-square.svg" />
+    <None Include="wwwroot\img\demos\auto-services\icons\car-safe.svg" />
+    <None Include="wwwroot\img\demos\auto-services\icons\car-winch.svg" />
+    <None Include="wwwroot\img\demos\auto-services\icons\checklist.svg" />
+    <None Include="wwwroot\img\demos\auto-services\icons\icon-location.svg" />
+    <None Include="wwwroot\img\demos\auto-services\icons\wheel-disk.svg" />
+    <None Include="wwwroot\img\demos\auto-services\square.svg" />
+    <None Include="wwwroot\img\demos\auto-services\squares.svg" />
+    <None Include="wwwroot\img\demos\beauty-salon\generic\dots.svg" />
+    <None Include="wwwroot\img\demos\beauty-salon\icons\arrow.svg" />
+    <None Include="wwwroot\img\demos\beauty-salon\icons\service-1-icon.svg" />
+    <None Include="wwwroot\img\demos\beauty-salon\icons\service-2-icon.svg" />
+    <None Include="wwwroot\img\demos\beauty-salon\icons\service-3-icon.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-2\icons\calendar.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-2\icons\mail.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-2\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\blackboard.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\email.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\infinite-crooked-line.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\label.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\left-quote.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\map-pin.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\mouse.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-3\icons\weight-balance.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-4\icons\icon-1.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-4\icons\icon-2.svg" />
+    <None Include="wwwroot\img\demos\business-consulting-4\icons\icon-3.svg" />
+    <None Include="wwwroot\img\demos\cleaning-services\icons\check-circle.svg" />
+    <None Include="wwwroot\img\demos\cleaning-services\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\construction-2\icons\icon-construction.svg" />
+    <None Include="wwwroot\img\demos\construction-2\icons\icon-painting.svg" />
+    <None Include="wwwroot\img\demos\construction-2\icons\icon-plumbing.svg" />
+    <None Include="wwwroot\img\demos\construction-2\icons\icon-pre-construction.svg" />
+    <None Include="wwwroot\img\demos\construction\backgrounds\diamonds-line.svg" />
+    <None Include="wwwroot\img\demos\construction\generic\line-separator.svg" />
+    <None Include="wwwroot\img\demos\construction\generic\skew-bar.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\email.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\faucet.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\location.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\paint-brush.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\pushcart.svg" />
+    <None Include="wwwroot\img\demos\construction\icons\winch.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\icons\arrow-symbols.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\icons\lamp.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\icons\mac.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\icons\megaphone.svg" />
+    <None Include="wwwroot\img\demos\digital-agency\slides\slide-1-mask.svg" />
+    <None Include="wwwroot\img\demos\education\elements\element-1.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-appointment.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-badge.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-laptop.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-list.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-mail.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-medal.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-phone-call.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-pin.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-review.svg" />
+    <None Include="wwwroot\img\demos\education\icons\icon-web-search-engine.svg" />
+    <None Include="wwwroot\img\demos\event\icons\event-editions.svg" />
+    <None Include="wwwroot\img\demos\event\icons\event-visitors.svg" />
+    <None Include="wwwroot\img\demos\event\icons\professional-speakers.svg" />
+    <None Include="wwwroot\img\demos\event\icons\successfull-stories.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-1.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-2.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-3.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-4.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-5.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-6.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-7.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-8.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\accounting-auditor-9.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\box.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\email.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\map-pin.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\people.svg" />
+    <None Include="wwwroot\img\demos\finance\icons\refresh-cw.svg" />
+    <None Include="wwwroot\img\demos\hotel\icons\tripadvisor.svg" />
+    <None Include="wwwroot\img\demos\industry-factory\icons\icon-location.svg" />
+    <None Include="wwwroot\img\demos\industry-factory\icons\icon-mail.svg" />
+    <None Include="wwwroot\img\demos\industry-factory\icons\icon-phone.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-1.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-2.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-3.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-4.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-5.svg" />
+    <None Include="wwwroot\img\demos\insurance\generic\lines-6.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\alloy-wheel.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\casa.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\hearts.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\money-suitcase.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\mouse-dollar.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\rounded-dollar.svg" />
+    <None Include="wwwroot\img\demos\insurance\icons\travel-case.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\backup-data-server.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\building.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\floppy-disk-memory.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\network-database.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\password-lock-secure.svg" />
+    <None Include="wwwroot\img\demos\it-services\icons\remove-monitor-access.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-car-accident.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-court.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-exchange.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-group.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-heart-hands.svg" />
+    <None Include="wwwroot\img\demos\law-firm-2\icons\icon-magnific-dollar.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\accident-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\business-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\business-years.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\capital-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\comment.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\criminal-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\divorce-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\envelope.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\health-law.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\professional-attorneys.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\satisfied-clients.svg" />
+    <None Include="wwwroot\img\demos\law-firm\icons\successfull-cases.svg" />
+    <None Include="wwwroot\img\demos\medical-2\icons\icon-calendar.svg" />
+    <None Include="wwwroot\img\demos\medical-2\icons\icon-envelope.svg" />
+    <None Include="wwwroot\img\demos\medical-2\icons\icon-location.svg" />
+    <None Include="wwwroot\img\demos\medical-2\icons\icon-phone.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\add-user.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\arrow-down.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\bubble.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\code.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\location.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\seo-edit.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\seo-notebook.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\seo-phone-tablet.svg" />
+    <None Include="wwwroot\img\demos\one-page-agency\icons\star.svg" />
+    <None Include="wwwroot\img\demos\real-estate\icons\arrow-right.svg" />
+    <None Include="wwwroot\img\demos\restaurant\icons\email.svg" />
+    <None Include="wwwroot\img\demos\restaurant\icons\location.svg" />
+    <None Include="wwwroot\img\demos\restaurant\icons\phone.svg" />
+    <None Include="wwwroot\img\demos\restaurant\icons\tripadvisor.svg" />
+    <None Include="wwwroot\img\demos\seo-2\icons\search.svg" />
+    <None Include="wwwroot\img\demos\seo-2\icons\target.svg" />
+    <None Include="wwwroot\img\demos\seo-2\icons\teaching.svg" />
+    <None Include="wwwroot\img\demos\startup-agency\icons\icon-calendar.svg" />
+    <None Include="wwwroot\img\demos\startup-agency\icons\icon-location.svg" />
+    <None Include="wwwroot\img\demos\startup-agency\icons\icon-mail.svg" />
+    <None Include="wwwroot\img\demos\startup-agency\icons\icon-phone.svg" />
+    <None Include="wwwroot\img\demos\wedding\backgrounds\bg-1.svg" />
+    <None Include="wwwroot\img\demos\wedding\backgrounds\bg-2.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-1.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-2.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-3.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-4.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-5.svg" />
+    <None Include="wwwroot\img\icons\accounting-auditor-6.svg" />
+    <None Include="wwwroot\img\icons\blackboard.svg" />
+    <None Include="wwwroot\img\icons\chart-up.svg" />
+    <None Include="wwwroot\img\icons\email.svg" />
+    <None Include="wwwroot\img\icons\icon-cart-big.svg" />
+    <None Include="wwwroot\img\icons\icon-cart-light.svg" />
+    <None Include="wwwroot\img\icons\icon-cart.svg" />
+    <None Include="wwwroot\img\icons\navigation.svg" />
+    <None Include="wwwroot\img\icons\phone.svg" />
+    <None Include="wwwroot\img\icons\weight-balance.svg" />
+    <None Include="wwwroot\img\landing\porto_performance.svg" />
+    <None Include="wwwroot\img\particle-dot.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.9.0" />
+    <PackageReference Include="Hangfire" Version="1.7.28" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.28" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eCommerce.bll\eCommerce.bll.csproj" />
+  </ItemGroup>
+
+</Project>

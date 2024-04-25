@@ -1,0 +1,123 @@
+﻿@model eCommerce.bll.DTOs.ProductDTO.CreateCategoryDTO
+@using eCommerce.bll.DTOs.LanguageDTO;
+@{
+    ViewData["Title"] = SharedLocalizer["Add Category"];
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int lngIndex = 0;
+}
+<div class="container">
+<section id="main-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                @SharedLocalizer["Add Category"]
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form asp-action="CreateCategory" id="form" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        @foreach (LanguageDTO languageDTO in ViewBag.Languages)
+                        {
+                            <h2>@languageDTO.Name</h2>
+                            <hr />
+                            <input type="hidden" class="form-control" name="CategoryTranslates[@lngIndex].LanguageCulture" value="@languageDTO.Culture" />
+                            <label>@SharedLocalizer["Name"] *</label>
+                            <input type="text" class="form-control" name="CategoryTranslates[@lngIndex].Name" />
+                            <label>@SharedLocalizer["Description"] *</label>
+                            <input type="text" class="form-control" name="CategoryTranslates[@lngIndex].Description" />
+                            lngIndex++;
+                        }
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>@SharedLocalizer["Data"]</h2>
+                        <hr />
+                        <div class="form-group">
+                            <label>@SharedLocalizer["Order"] *</label>
+                            <input type="number" class="form-control" name="Order" />
+                        </div>
+                        <div class="form-group">
+                            <label>@SharedLocalizer["Icon"] *</label>
+                            <div id="icon"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>@SharedLocalizer["Category"] *</label>
+                            <div id="category"></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="published"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dx-fieldset">
+                    <br />
+                    <div id="summary"></div>
+                    <br />
+                    <div id="button"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</div>
+@section Scripts {
+<script>
+    var getCategory = new DevExpress.data.AspNet.createStore({
+            key: "id",
+            loadUrl: "/API/ProductApi",
+            onBeforeSend: function (method, ajaxOptions) {
+                ajaxOptions.xhrFields = { withCredentials: true };
+            }
+        });
+    $(function () {
+        $("#icon").dxFileUploader({
+                                            selectButtonText: '@SharedLocalizer["Choose a icon"]',
+                                            name: "FormIcon",
+                                            labelText: '@SharedLocalizer["or drag icon"]',
+                                            accept: "image/*",
+                                            uploadMode: '@SharedLocalizer["or drag"]',
+                                            multiple: false,
+                                        }).dxValidator({
+                                            validationRules: [{
+                                                type: "required",
+                                                message: '@SharedLocalizer["Upload  icon"]'
+                                            }]
+                                        });
+           $("#category").dxSelectBox({
+                dataSource: getCategory,
+                displayExpr: "name",
+                valueExpr: "id",
+                name: "ParentId",
+                searchEnabled: true,
+                itemTemplate: function (itemData, itemIndex, itemElement) {
+                return $("<div />").append(
+                 $("<img />").attr("src", "http://192.168.172.1:5000/admindata/product/category/"+itemData.icon)
+                .css("width", "20px")
+                .css("height", "20px"),
+                 $("<p />").text(itemData.name)
+                          .css("display", "inline-block")
+                          .css("margin", "0 0 0 10px")
+                     )
+                .css("display", "flex")
+                .css("align-items", "center")
+             }
+            });
+         $("#published").dxCheckBox({
+               value: true,
+               text: '@SharedLocalizer["Active"]',
+               name: 'IsPublish',
+           });
+         $("#button").dxButton({
+               text: '@SharedLocalizer["Add"]',
+               type: "success",
+               useSubmitBehavior: true,
+           });
+           $("#summary").dxValidationSummary({});
+       });
+</script>
+}
+
+

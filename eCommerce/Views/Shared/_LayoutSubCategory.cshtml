@@ -1,0 +1,31 @@
+﻿@using eCommerce.bll.DTOs.ProductDTO;
+@{
+    Layout = "~/Views/Shared/_LayoutCategory.cshtml";
+}
+<div style="display: flex;">
+<div class="vtabs">
+    <ul class="nav nav-tabs tabs-vertical" style="width:200px;">
+        @foreach (CategoryDTO categoryDTO in ViewBag.SubCategory)
+        {
+                <input type="hidden" value=@categoryDTO.ParentParentId id="icon" />
+                <li class="nav-item">
+                    @if (ViewBag.List == 1)
+                    {
+                        <a class="nav-link" id=@categoryDTO.Id asp-area="" asp-action="CreateProduct" asp-controller="Product" asp-route-id=@categoryDTO.Id asp-route-parent=@categoryDTO.ParentParentId><div style="display: flex;justify-content: space-between"><span class="hidden-xs-down">@categoryDTO.Name</span><span class="hidden-sm-up"><i class="ti-angle-right"></i></span></div> </a>
+                    } else
+                    {
+                        <a class="nav-link" id=@categoryDTO.Id asp-area="" asp-action="Product" asp-controller="Product" asp-route-id=@categoryDTO.Id asp-route-parent=@categoryDTO.ParentParentId><div style="display: flex;justify-content: space-between"><span class="hidden-xs-down">@categoryDTO.Name</span><span class="hidden-sm-up"><i class="ti-angle-right"></i></span></div> </a>                        
+                    }
+                </li>
+        }
+    </ul>
+</div>
+@RenderBody()
+</div>
+@await RenderSectionAsync("Scripts", required: false)
+@section Scripts{
+<script>
+    var q = document.getElementById("icon").value;
+    document.getElementById(q).className="nav-link active";
+</script>
+}

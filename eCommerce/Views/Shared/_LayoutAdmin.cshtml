@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Commerce: Admin</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="~/admin/assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/admin/assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/admin/assets/css/lib/weather-icons.css" rel="stylesheet" />
+    <link href="~/admin/assets/css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin/assets/css/lib/helper.css" rel="stylesheet">
+    <link href="~/admin/assets/css/style.css" rel="stylesheet">
+    @await RenderSectionAsync("Css", required: false)
+
+    <!-- DevExtreme styles -->
+
+    <link href="~/devextreme/css/dx.common.css" rel="stylesheet" />
+    <link href="~/devextreme/css/dx.light.css" rel="stylesheet" />
+    <script src="~/devextreme/js/jquery.min.js"></script>
+    <script src="~/devextreme/js/dx-quill.min.js"></script>
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <div class="logo">
+                        <a asp-area="" asp-action="index" asp-controller="Admin">
+                            <span>@SharedLocalizer["Administrator"]</span>
+                        </a>
+                    </div>
+
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-control-shuffle"></i> @SharedLocalizer["Category"] <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li><a asp-area="" asp-action="CategoryList" asp-controller="Product">@SharedLocalizer["Categories"]</a></li>
+                            <li><a asp-area="" asp-action="CreateCategory" asp-controller="Product">@SharedLocalizer["Add Category"]</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-control-shuffle"></i> @SharedLocalizer["Product"] <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li><a asp-area="" asp-action="Category" asp-controller="Product" asp-route-list=0>@SharedLocalizer["Products"]</a></li>
+                            <li><a asp-area="" asp-action="Category" asp-controller="Product" asp-route-list=1>@SharedLocalizer["Add Product"]</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-control-shuffle"></i> @SharedLocalizer["Brand"] <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li><a asp-area="" asp-action="Brand" asp-controller="Product">@SharedLocalizer["Brands"]</a></li>
+                            <li><a asp-area="" asp-action="CreateBrand" asp-controller="Product">@SharedLocalizer["Add Brand"]</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-shopping-cart-full"></i> @SharedLocalizer["Orders"] <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li><a asp-area="" asp-action="Order" asp-controller="Order">@SharedLocalizer["Orders"]</a></li>
+                            <li><a asp-area="" asp-action="Index" asp-controller="Order">@SharedLocalizer["Complete Orders"]</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-shopping-cart-full"></i> @SharedLocalizer["Notification"] <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li><a asp-area="" asp-action="Index" asp-controller="Notification">@SharedLocalizer["Notifications"]</a></li>
+                            <li><a asp-area="" asp-action="Create" asp-controller="Notification">@SharedLocalizer["Create Notification"]</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-area="" asp-action="Index" asp-controller="UserRoles"><i class="ti-user"></i>@SharedLocalizer["User Roles"]</a></li>
+                    <li><a asp-area="" asp-action="Index" asp-controller="Roles"><i class="ti-calendar"></i>@SharedLocalizer["Roles"]</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <div class="nav-header  z-30 relative order-2">
+                            <div class="xl:container xl:px-0 px-4 flex sm:justify-end justify-between h-12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        @await Html.PartialAsync("_SelectLanguagePartial")
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jquery vendor -->
+    <script src="~/admin/assets/js/lib/jquery.min.js"></script>
+    <script src="~/admin/assets/js/lib/jquery.nanoscroller.min.js"></script>
+    <!-- nano scroller -->
+    <script src="~/admin/assets/js/lib/menubar/sidebar.js"></script>
+    <script src="~/admin/assets/js/lib/preloader/pace.min.js"></script>
+    <!-- sidebar -->
+
+    <script src="~/admin/assets/js/lib/bootstrap.min.js"></script>
+    <script src="~/admin/assets/js/scripts.js"></script>
+
+    <!-- bootstrap -->
+
+    <script src="~/admin/assets/js/lib/calendar-2/moment.latest.min.js"></script>
+    <script src="~/admin/assets/js/lib/calendar-2/pignose.calendar.min.js"></script>
+    <script src="~/admin/assets/js/lib/calendar-2/pignose.init.js"></script>
+
+
+    <script src="~/admin/assets/js/lib/weather/jquery.simpleWeather.min.js"></script>
+    <script src="~/admin/assets/js/lib/weather/weather-init.js"></script>
+    <script src="~/admin/assets/js/lib/circle-progress/circle-progress.min.js"></script>
+    <script src="~/admin/assets/js/lib/circle-progress/circle-progress-init.js"></script>
+    <script src="~/admin/assets/js/lib/chartist/chartist.min.js"></script>
+    <script src="~/admin/assets/js/lib/sparklinechart/jquery.sparkline.min.js"></script>
+    <script src="~/admin/assets/js/lib/sparklinechart/sparkline.init.js"></script>
+    <script src="~/admin/assets/js/lib/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/admin/assets/js/lib/owl-carousel/owl.carousel-init.js"></script>
+    <!-- scripit init-->
+    <script src="~/admin/assets/js/dashboard2.js"></script>
+
+    <!-- DevExtreme library -->
+
+    <script src="~/devextreme/js/dx.all.js"></script>
+    <script src="~/devextreme/js/localization/dx.messages.ru.js"></script>
+    <script src="~/devextreme/js/dx.aspnet.data.js"></script>
+    @await Component.InvokeAsync("Notyf")
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

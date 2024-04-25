@@ -1,0 +1,80 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="col-md-6 col-lg-5">
+    <h2 class="font-weight-bold text-5 mb-0">Register</h2>
+
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Input.Email" class="form-label text-color-dark text-3">Username or email address <span class="text-color-danger">*</span></label>
+                <input type="text" asp-for="Input.Email" class="form-control form-control-lg text-4">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Input.Password" class="form-label text-color-dark text-3">Password <span class="text-color-danger">*</span></label>
+                <input type="password" asp-for="Input.Password" class="form-control form-control-lg text-4">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Input.ConfirmPassword" class="form-label text-color-dark text-3">Confirm Password <span class="text-color-danger">*</span></label>
+                <input type="password" asp-for="Input.ConfirmPassword" class="form-control form-control-lg text-4">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <p class="text-2 mb-2">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="text-decoration-none">privacy policy.</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <button type="submit" class="btn btn-dark btn-modern w-100 text-uppercase rounded-0 font-weight-bold text-3 py-3" data-loading-text="Loading...">Register</button>
+            </div>
+        </div>
+    </form>
+
+    @*<div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>*@
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

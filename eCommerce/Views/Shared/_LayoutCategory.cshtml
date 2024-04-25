@@ -1,0 +1,24 @@
+﻿@using eCommerce.bll.DTOs.ProductDTO;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- /# row -->
+<section id="main-content">
+    <div class="row">
+        <div class="vtabs">
+            <input type="hidden" value=@ViewBag.list id="list" />            
+            <ul class="nav nav-tabs tabs-vertical" style="width:200px;">                
+                @foreach (CategoryDTO categoryDTO in ViewBag.Category)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" id=@categoryDTO.Id asp-area="" asp-action="SubCategory" asp-controller="Product" asp-route-id="@categoryDTO.Id" asp-route-list=@ViewBag.List><div style="display: flex;justify-content: space-between"> <span class="hidden-xs-down">@categoryDTO.Name</span><span class="hidden-sm-up"><i class="ti-angle-right"></i></span></div> </a>
+                    </li>
+                }
+            </ul>
+            <!-- Tab panes -->
+            @RenderBody()
+        </div>
+    </div>
+</section>
+@await RenderSectionAsync("Scripts", required: false)

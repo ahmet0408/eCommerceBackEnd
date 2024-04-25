@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = SharedLocalizer["Products"];
+    Layout = "~/Views/Shared/_LayoutSubCategory.cshtml";
+    CategoryDTO categoryDTO = @ViewBag.Cat;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header m-0">
+                @categoryDTO.Name
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="gridContainer">
+            <input type="hidden" value=@ViewBag.ParentId id="parent" />
+            <input type="hidden" value=@ViewBag.Parent id="parentt" />
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    var x = document.getElementById("parent").value;
+    var x1 = document.getElementById("parentt").value;
+    document.getElementById(x).className="nav-link active";
+    $(function () {
+        let url = "/api/ProductApi/GetAllProductWithCategoryId/"+x;
+        var returnUrl = '@Context.Request.Path@Context.Request.QueryString';
+        $("#gridContainer").dxDataGrid({
+            dataSource: DevExpress.data.AspNet.createStore({
+                key: "id",
+                loadUrl: url,
+                insertUrl: url,
+                updateUrl: url,
+                deleteUrl: "/api/ProductApi/GetAllProductWithCategoryId",
+                onBeforeSend: function (method, ajaxOptions) {
+                    ajaxOptions.xhrFields = { withCredentials: true };
+                }
+            }),
+            onInitNewRow: function(e) {
+                var url = `@Url.Action("CreateProduct", "Product")`;
+                window.location = url+"/"+x+"?parent="+x1;
+            },
+            filterPanel: {
+                visible: false
+            },
+            filterRow: { visible: false },
+            remoteOperations: true,
+            onRowUpdating: function (e) {
+                e.newData = Object.assign(e.oldData, e.newData)
+            },
+            //scrolling: {
+            //    mode: "virtual",
+            //    rowRenderingMode: "virtual"
+            //},
+            paging: {
+                pageSize: 10
+            },
+            editing: {
+                useIcons: true,
+                allowUpdating: true,
+                allowDeleting: true,
+                allowAdding: true
+            },
+            headerFilter: {
+                visible: true
+            },
+            wordWrapEnabled: true,
+            showColumnLines: true,
+            showRowLines: true,
+            rowAlternationEnabled: true,
+            showBorders: true,
+            searchPanel: {
+                visible: true
+            },
+            stateStoring: {
+                enabled: true,
+                type: "localStorage",
+                storageKey: "ProductAdmin"
+            },
+            columns: [
+                {
+                    caption: '@SharedLocalizer["Image"]',
+                    dataField: "imagePath",
+                    width: 100,
+                    allowSorting: false,
+                    allowHeaderFiltering: false,
+                    cellTemplate(container, options) {
+                    $('<div>')
+                    .append($('<img>', {style: "margin-left:15px;height: 60px;width: 60px;", src: "/admindata/product/product/"+options.value }))
+                    .appendTo(container);}
+                },
+                {
+                    caption: '@SharedLocalizer["Name"]',
+                    dataField: "name",
+                    allowSorting: false,
+                    allowHeaderFiltering: false
+                },
+                {
+                    caption: '@SharedLocalizer["Short Description"]',
+                    dataField: "shortDescription",
+                    allowSorting: false,
+                    allowHeaderFiltering: false
+                },
+                {
+                    caption: '@SharedLocalizer["Category"]',
+                    dataField: "categories",
+                    width: 150,
+                    allowSorting: false,
+                    allowHeaderFiltering: false,
+                    cellTemplate(container, options) {
+                        var s="";var t=options.value;
+                        for (let i =0;i<t.length;i++){
+                            if (t[i]=='?'){s=s+"<br />"} else {s=s+t[i]}
+                        }
+                    $('<div>')
+                    .append($('<p>').html(s))
+                    .appendTo(container);
+                    }
+                },
+                {
+                    caption: '@SharedLocalizer["Regular Price"]',
+                    dataField: "regularPrice",
+                    width: 100,
+                    allowHeaderFiltering: false
+                },
+                {
+                    caption: '@SharedLocalizer["Discount Price(%)"]',
+                    dataField: "discountPrice",
+                    width: "130",
+                    allowHeaderFiltering: false
+                },
+                {
+                    caption: '@SharedLocalizer["SKU"]',
+                    dataField: "sku",
+                    width: "70",
+                    allowHeaderFiltering: false
+                },
+                {
+                    caption: '@SharedLocalizer["Order"]',
+                    dataField: "order",
+                    width: "60",
+                    allowHeaderFiltering: false
+                },
+                {
+                    type: "buttons",
+                    width: 80,
+                    buttons: [
+                        {
+                            hint: '@SharedLocalizer["Edit"]',
+                            icon: "edit",
+                            onClick: function (e) {
+                                var idString = e.row.data.id;
+                                var url = `@Url.Action("EditProduct", "Product")`;
+                                window.location = url + '/' + idString+"?parent="+x1+"&child="+x;
+                            }
+                        },
+                        "delete"
+                    ]
+                }
+            ]
+        });
+
+    });
+</script>
+}

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures.Where(p => p.Name != requestCulture.RequestCulture.Culture.Name)
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName.Substring(0, 1).ToUpper() + c.NativeName.Substring(1) })
+        .ToList();
+
+    List<SelectListItem> lngListItem = new List<SelectListItem>();
+    foreach (var c in cultureItems)
+    {
+        if (c.Text == "Türkmen dili")
+        {
+            c.Text = "Türkmen";
+        }
+        lngListItem.Add(c);
+    }
+
+}
+<div class="dropdown dib">
+    <div class="header-icon" data-toggle="dropdown">
+        <span class="user-avatar" style="display: flex;justify-content: space-between;align-items: center">
+            @if (requestCulture.RequestCulture.UICulture.NativeName == "türkmen dili")
+            {
+                <span class="hover:text-white"> Türkmen </span>
+            }
+            else
+            {
+                <span class="hover:text-white"> @(requestCulture.RequestCulture.UICulture.NativeName.Substring(0, 1).ToUpper() + requestCulture.RequestCulture.UICulture.NativeName.Substring(1)) </span>
+            }
+            <i class="ti-angle-down f-s-10 p-1"></i>
+        </span>
+    </div>
+    <ul class="dropdown-menu" style="background-color: black;opacity: 0.9;min-width: 5rem;margin: -8px auto auto 12px; border: none">
+        @foreach (var lng in lngListItem)
+        {
+            <li>
+                <a asp-area="" asp-controller="Admin" asp-action="SetLanguage"
+               asp-route-returnUrl="@Context.Request.GetEncodedPathAndQuery()" asp-route-culture="@lng.Value"
+               data-link="#" class="py-1 hover:text-white">@lng.Text</a>
+            </li>
+        }
+    </ul>
+</div>

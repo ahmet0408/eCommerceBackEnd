@@ -215,7 +215,7 @@
                searchEnabled: true,
                itemTemplate: function (itemData, itemIndex, itemElement) {
             return $("<div />").append(
-                $("<img />").attr("src", "http://192.168.172.1:5000/admindata/product/brand/"+itemData.icon)
+                $("<img />").attr("src", "http://localhost:5000/admindata/product/brand/"+itemData.icon)
                 .css("width", "20px")
                 .css("height", "20px"),
                  $("<p />").text(itemData.name)

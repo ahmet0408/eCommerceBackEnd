@@ -20,7 +20,7 @@ namespace eCommerce.Controllers.API
         public async Task<ActionResult> RegisterAsync([FromForm] RegisterModel model)        
         {  
             await _userService.RegisterAsync(model);
-            return Redirect("http://192.168.72.1:3000/auth/login");
+            return Redirect("http://localhost:3000/auth/login");
         }
 
         [HttpPost("login")]

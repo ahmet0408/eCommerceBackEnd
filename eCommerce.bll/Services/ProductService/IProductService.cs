@@ -39,6 +39,7 @@ namespace eCommerce.bll.Services.ProductService
         Task<IEnumerable<ProductDTO>> GetAllDiscountProduct();
         Task<IEnumerable<ProductDTO>> GetAllStockProduct();
         Task<IEnumerable<ProductDTO>> GetAllNewProduct();
-        Task<ProductDetailDTO> GetProductWithId(int id);        
+        Task<ProductDetailDTO> GetProductWithId(int id);
+        IEnumerable<ProductDTO> GetProductWithSearch(string sText);
     }
 }

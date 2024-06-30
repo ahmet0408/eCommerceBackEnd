@@ -20,6 +20,11 @@ namespace eCommerce.Controllers.API
         {
             _productService = productService;
         }
+        [HttpGet("{q}")]
+        public object GetAllProductForSearch([FromQuery] string q, DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load<ProductDTO>(_productService.GetProductWithSearch(q), loadOptions);
+        }
         //Category
         [HttpGet]
         public async Task<object> GetAllCategory(DataSourceLoadOptions loadOptions)

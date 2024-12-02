@@ -11,6 +11,7 @@ namespace eCommerce.bll.Services.NotificationService
     {
         Task CreateNotification(CreateNotificationDTO modelDTO);
         Task<NotificationDTO> GetNotification();
+        Task RemoveNotification(int id);
         IEnumerable<NotificationDTO> GetAllNotification();
     }
 }

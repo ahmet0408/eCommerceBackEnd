@@ -28,5 +28,10 @@ namespace eCommerce.Controllers.API
             return DataSourceLoader.Load<NotificationDTO>(_notificationService.GetAllNotification().OrderBy(o => o.Order).AsQueryable(), loadOptions);
 
         }
+        [HttpDelete("GetAll/{id}")]
+        public async Task DeleteCategory(int id)
+        {
+            await _notificationService.RemoveNotification(id);
+        }
     }
 }

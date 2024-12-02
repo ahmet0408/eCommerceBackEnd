@@ -62,5 +62,15 @@ namespace eCommerce.bll.Services.NotificationService
             var result = _mapper.Map<IEnumerable<NotificationDTO>>(notification);
             return result;
         }
+        public async Task RemoveNotification(int id)
+        {
+            Notification notification = await _dbContext.Notification.FindAsync(id);
+            if (!string.IsNullOrEmpty(notification.Image))
+            {
+                _imageService.DeleteImage(notification.Image, "Notification");
+            }
+            _dbContext.Notification.Remove(notification);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

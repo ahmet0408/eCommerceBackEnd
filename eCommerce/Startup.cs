@@ -34,7 +34,14 @@ namespace eCommerce
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    builder => builder.WithOrigins("http://localhost:3000") // Adjust as per your React app URL
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod()
+                                      .AllowCredentials());
+            });
 
             //Configuration from AppSettings
             services.Configure<JWT>(Configuration.GetSection("JWT"));
@@ -147,13 +154,7 @@ namespace eCommerce
             app.UseStaticFiles();
             app.UseRequestLocalization();
 
-            app.UseCors(builder => builder
-               .WithOrigins("http://localhost:3000","http://192.168.163.1:3000")
-               .AllowAnyHeader()
-               .AllowAnyMethod()
-               //.AllowAnyOrigin()
-               .AllowCredentials()
-            );
+            app.UseCors("AllowReactApp");
 
             app.UseRouting();
 

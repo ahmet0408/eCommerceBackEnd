@@ -547,8 +547,7 @@ namespace eCommerce.bll.Services.ProductService
         public IEnumerable<ProductDTO> GetProductWithSearch(string sText)
         {
             string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            var product = _dbContext.Product.Include(p => p.ProductTranslates.Where(p => p.LanguageCulture == culture && p.Name.ToUpper() == sText.ToUpper()));
-            //.Include(p => p.ProductCategory).ThenInclude(p => p.Category).ThenInclude(p => p.CategoryTranslates.Where(p => p.LanguageCulture == culture && p.Name.Contains(sText)));
+            var product = _dbContext.Product.Where(p => p.ProductTranslates.Select(p => p.Name).FirstOrDefault().ToLower().Contains(sText.ToLower()) || p.ProductCategory.Select(p => p.Category.CategoryTranslates.Select(p => p.Name).FirstOrDefault().ToLower().Contains(sText.ToLower())).FirstOrDefault()).Include(p => p.ProductTranslates);
             var result = _mapper.Map<IEnumerable<ProductDTO>>(product);
             return result;
         }

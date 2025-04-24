@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,6 +57,7 @@ namespace eCommerce.Controllers.Admin
             var model = new List<ManageUserRolesViewModel>();
             foreach (var role in _roleManager.Roles)
             {
+                Console.WriteLine(user+" "+role);
                 var userRolesViewModel = new ManageUserRolesViewModel
                 {
                     RoleId = role.Id,
